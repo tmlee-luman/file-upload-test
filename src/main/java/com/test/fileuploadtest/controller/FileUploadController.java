@@ -28,7 +28,7 @@ public class FileUploadController {
     }
 
     @PostMapping("/api/v2/upload")
-    public ResponseEntity<String> upload(HttpServletRequest request, @RequestBody MultipartFile multipartFile) {
+    public ResponseEntity<String> upload(HttpServletRequest request, @RequestParam("file") MultipartFile multipartFile) {
         String contentRange = request.getHeader("Content-Range");
         int rangeSeparator= contentRange.indexOf("-");
         int sizeSeparator= contentRange.indexOf("/");
