@@ -34,10 +34,10 @@ public class FileUploadController {
         String rangeEnd = contentRange.substring(rangeSeparator, sizeSeparator);
         String size = contentRange.substring(sizeSeparator);
 
-        log.trace("range start: {}", rangeStart);
-        log.trace("range end: {}", rangeEnd);
-        log.trace("range size: {}", size);
-        log.trace("file: {}", fileData);
+        log.info("range start: {}", rangeStart);
+        log.info("range end: {}", rangeEnd);
+        log.info("range size: {}", size);
+        log.info("file: {}", fileData);
         return ResponseEntity.ok()
                 .build();
     }
