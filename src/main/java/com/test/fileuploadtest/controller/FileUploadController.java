@@ -31,8 +31,8 @@ public class FileUploadController {
         int sizeSeparator= contentRange.indexOf("/");
 
         String rangeStart = contentRange.substring(0, rangeSeparator);
-        String rangeEnd = contentRange.substring(rangeSeparator, sizeSeparator);
-        String size = contentRange.substring(sizeSeparator);
+        String rangeEnd = contentRange.substring(rangeSeparator + 1, sizeSeparator);
+        String size = contentRange.substring(sizeSeparator + 1);
 
         log.info("range start: {}", rangeStart);
         log.info("range end: {}", rangeEnd);

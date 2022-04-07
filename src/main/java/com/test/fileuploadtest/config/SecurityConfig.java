@@ -1,10 +1,12 @@
 package com.test.fileuploadtest.config;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @EnableWebSecurity
@@ -16,6 +18,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .cors()
                 .configurationSource(configurationSource())
+                .and()
+                .authorizeRequests()
+                    .requestMatchers(CorsUtils::isPreFlightRequest)
+                    .permitAll()
                 .and()
                 .authorizeRequests()
                 .anyRequest()
